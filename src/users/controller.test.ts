@@ -16,14 +16,12 @@ describe('Array', () => {
         request = chai.request(app)
     })
     describe('#users', () => {
-        it('users/', () => {
-            request.get('/v1/users').then((res) => {
+        it('users/', async () => {
+            await request.get('/v1/users').then((res) => {
                 chai.expect(res.body, "No body excepted").to.eql({
                     id: 1
                 })
-            }).catch((error) => {
-                console.log(error)
-            });
+            })
         });
     });
     describe('#indexOf()', () => {
