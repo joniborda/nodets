@@ -1,6 +1,6 @@
 import app from './app'
-import config from './config'
+//import { config } from './config'
 
-app.listen(config.prod.PORT, () => {
-    console.log(`server started at http://localhost:${config.prod.PORT}`);
+app.listen(8080, () => {
+    console.log(`server started at http://localhost:${8080}`);
 });
