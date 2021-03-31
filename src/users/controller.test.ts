@@ -13,16 +13,35 @@ describe('Array', () => {
         server = app.listen(8008, () => {
             console.log(`server started at http://localhost:${8008}`)
         })
-        request = chai.request(app)
     })
     describe('#users', () => {
         it('users/', async () => {
+            request = chai.request(app)
             await request.get('/v1/users').then((res) => {
                 chai.expect(res.body, "No body excepted").to.eql({
                     id: 1
                 })
             })
-        });
+        })
+
+        it('not found', async () => {
+            request = chai.request(app)
+            await request.get('/notfound').then((res) => {
+                chai.expect(res.body, "Not found excepted").to.eql({
+                    message: "Not found"
+                })
+            })
+        })
+
+        it('error 500', async () => {
+            // TODO : implements
+            request = chai.request(app)
+            await request.get('/v1/users').then((res) => {
+                chai.expect(res.body, "Not found excepted").to.eql({
+                    message: "Not found"
+                })
+            })
+        })
     });
     describe('#indexOf()', () => {
 
